@@ -1,3 +1,12 @@
+<?php
+session_start();
+if (!isset($_SESSION['user'])) {
+    header('Location: ../login.php'); 
+    exit();
+}
+
+$user = $_SESSION['user'];
+?>
 <div class="container-fluid g-0">
     <div class="row">
         <div class="col-lg-12 p-0">
@@ -29,7 +38,7 @@
                         <img src="img/client_img.png" alt="#">
                         <div class="profile_info_iner">
                             <p>Welcome Admin!</p>
-                            <h5>Travor James</h5>
+                            <h5>Hello, <?php echo ($user['username']); ?></h5> 
                             <div class="profile_info_details">
                                 <a href="#">My Profile <i class="ti-user"></i></a>
                                 <a href="#">Settings <i class="ti-settings"></i></a>

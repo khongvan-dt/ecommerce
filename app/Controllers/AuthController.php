@@ -31,13 +31,14 @@ class AuthController
 
         $result = $this->authService->login($email, $password);
 
-        if (is_array($result)) {
+        if (is_array(value: $result)) {
             $_SESSION['user'] = $result;
             $this->redirectUser($result['role']);
         } else {
-            $this->showLoginForm($result);
+            $this->showLoginForm(error: $result);
         }
     }
+
 
     private function redirectUser($role)
     {
